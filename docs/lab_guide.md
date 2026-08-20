@@ -111,7 +111,13 @@ Cách khắc phục (chọn 1 trong 3):
 
 ## Exit ticket
 
-Mỗi nhóm trả lời 2 câu:
+### 1. Case nào nên dùng multi-agent? Vì sao?
+- **Các tác vụ phức tạp, phân rã được theo giai đoạn chuyên môn (Decoupled Sub-tasks):** Ví dụ như nghiên cứu kỹ thuật đa chặng (Thu thập dữ liệu -> Phân tích lỗ hổng/Mâu thuẫn -> Viết báo cáo khoa học -> Phản biện kiểm chứng thực tế).
+- **Yêu cầu phân tách quyền hạn và ngữ cảnh (Context Isolation & Least Privilege):** Khi mỗi bước chỉ cần một tập dữ liệu hoặc công cụ đặc thù (ngăn chặn hiện tượng quá tải context window và rò rỉ dữ liệu).
+- **Cần cơ chế kiểm tra chéo độc lập (Verification & Guardrailing):** Khi cần một agent độc lập (như Critic/Verifier) để fact-check và gắn mã citation mà không bị thiên kiến tự xác nhận (confirmation bias) từ agent tạo sinh.
 
-1. Case nào nên dùng multi-agent? Vì sao?
-2. Case nào không nên dùng multi-agent? Vì sao?
+### 2. Case nào không nên dùng multi-agent? Vì sao?
+- **Các tác vụ đơn giản, phản hồi trực tiếp (Single-turn Q&A, Tóm tắt ngắn, Phân loại văn bản):** Vì hệ thống multi-agent sẽ tạo ra độ trễ cao không cần thiết (high latency) và tiêu tốn token gấp nhiều lần (higher cost).
+- **Tác vụ có tính phụ thuộc tuần tự tuyến tính nghiêm ngặt không cần feedback loop:** Khi một pipeline deterministic đơn giản (prompt chaining / DSPy pipeline) đã đủ giải quyết mà không cần điều phối linh hoạt.
+- **Môi trường yêu cầu độ trễ cực thấp (Sub-second Latency SLA):** Việc chuyển giao trạng thái (state handoffs) và tuần tự gọi nhiều lượt LLM sẽ làm vi phạm yêu cầu thời gian thực.
+

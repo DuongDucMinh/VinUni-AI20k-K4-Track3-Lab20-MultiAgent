@@ -1,0 +1,96 @@
+{
+  "run_name": "Multi-Agent (Task 3)",
+  "events": [
+    {
+      "name": "supervisor_decision",
+      "payload": {
+        "route": "researcher",
+        "reason": "research_notes is None",
+        "iteration": 1,
+        "has_research_notes": false,
+        "has_analysis_notes": false,
+        "has_final_answer": false,
+        "errors": 0
+      }
+    },
+    {
+      "name": "researcher_done",
+      "payload": {
+        "sources": 5,
+        "notes_length": 2817,
+        "tokens": [
+          477,
+          851
+        ],
+        "duration_seconds": 18.62
+      }
+    },
+    {
+      "name": "supervisor_decision",
+      "payload": {
+        "route": "analyst",
+        "reason": "analysis_notes is None",
+        "iteration": 2,
+        "has_research_notes": true,
+        "has_analysis_notes": false,
+        "has_final_answer": false,
+        "errors": 0
+      }
+    },
+    {
+      "name": "analyst_done",
+      "payload": {
+        "analysis_length": 5193,
+        "tokens": [
+          824,
+          1123
+        ],
+        "duration_seconds": 15.24,
+        "model_used": "openai/gpt-oss-120b"
+      }
+    },
+    {
+      "name": "supervisor_decision",
+      "payload": {
+        "route": "writer",
+        "reason": "final_answer is None (or error fallback)",
+        "iteration": 3,
+        "has_research_notes": true,
+        "has_analysis_notes": true,
+        "has_final_answer": false,
+        "errors": 0
+      }
+    },
+    {
+      "name": "writer_done",
+      "payload": {
+        "report_length": 12321,
+        "cited_ids": [
+          "K001",
+          "K003",
+          "K004",
+          "K018",
+          "K028"
+        ],
+        "tokens": [
+          2164,
+          2652
+        ],
+        "duration_seconds": 29.46,
+        "model_used": "openai/gpt-oss-120b"
+      }
+    },
+    {
+      "name": "supervisor_decision",
+      "payload": {
+        "route": "done",
+        "reason": "final_answer exists",
+        "iteration": 4,
+        "has_research_notes": true,
+        "has_analysis_notes": true,
+        "has_final_answer": true,
+        "errors": 0
+      }
+    }
+  ]
+}

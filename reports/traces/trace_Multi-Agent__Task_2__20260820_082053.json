@@ -1,0 +1,97 @@
+{
+  "run_name": "Multi-Agent (Task 2)",
+  "events": [
+    {
+      "name": "supervisor_decision",
+      "payload": {
+        "route": "researcher",
+        "reason": "research_notes is None",
+        "iteration": 1,
+        "has_research_notes": false,
+        "has_analysis_notes": false,
+        "has_final_answer": false,
+        "errors": 0
+      }
+    },
+    {
+      "name": "researcher_done",
+      "payload": {
+        "sources": 5,
+        "notes_length": 3097,
+        "tokens": [
+          726,
+          869
+        ],
+        "duration_seconds": 15.55
+      }
+    },
+    {
+      "name": "supervisor_decision",
+      "payload": {
+        "route": "analyst",
+        "reason": "analysis_notes is None",
+        "iteration": 2,
+        "has_research_notes": true,
+        "has_analysis_notes": false,
+        "has_final_answer": false,
+        "errors": 0
+      }
+    },
+    {
+      "name": "analyst_done",
+      "payload": {
+        "analysis_length": 5411,
+        "tokens": [
+          840,
+          1199
+        ],
+        "duration_seconds": 15.53,
+        "model_used": "openai/gpt-oss-120b"
+      }
+    },
+    {
+      "name": "supervisor_decision",
+      "payload": {
+        "route": "writer",
+        "reason": "final_answer is None (or error fallback)",
+        "iteration": 3,
+        "has_research_notes": true,
+        "has_analysis_notes": true,
+        "has_final_answer": false,
+        "errors": 0
+      }
+    },
+    {
+      "name": "writer_done",
+      "payload": {
+        "report_length": 11297,
+        "cited_ids": [
+          "A05",
+          "CONFLICT",
+          "K001",
+          "K004",
+          "camel",
+          "chatdev"
+        ],
+        "tokens": [
+          2247,
+          2421
+        ],
+        "duration_seconds": 28.58,
+        "model_used": "openai/gpt-oss-120b"
+      }
+    },
+    {
+      "name": "supervisor_decision",
+      "payload": {
+        "route": "done",
+        "reason": "final_answer exists",
+        "iteration": 4,
+        "has_research_notes": true,
+        "has_analysis_notes": true,
+        "has_final_answer": true,
+        "errors": 0
+      }
+    }
+  ]
+}
